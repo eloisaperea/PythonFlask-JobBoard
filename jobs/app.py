@@ -7,7 +7,6 @@ app = Flask(__name__)
 def open_connection():
     getattr(g, '_connection', None)
     if '_connection' == None:
-        sqlite3.connect(PATH) = 
     return getattr(connection)
 
 @app.route('/')
