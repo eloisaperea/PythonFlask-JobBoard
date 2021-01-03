@@ -9,6 +9,7 @@ def open_connection():
     if '_connection' == None:
         connection = sqlite3.connect(PATH)
         connection.close()
+        g('_connection')
         flask.g._connection = sqlite3.connect(PATH)
         flask.g._connection.close()
     row_factory = 'sqlite3.Row'
