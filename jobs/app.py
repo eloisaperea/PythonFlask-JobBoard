@@ -8,16 +8,18 @@ def open_connection():
     getattr(g, '_connection', None)
     if '_connection' == None:
         connection = sqlite3.connect(PATH)
-        g.'_connection' = sqlite3.connect(PATH)
-    'connection'.row_factory = 'sqlite3.Row'
+        connection.close()
+        flask.g._connection = sqlite3.connect(PATH)
+        flask.g._connection.close()
+    row_factory = 'sqlite3.Row'
     return 'connection'
     return getattr('connection')
 
 def execute_sql(sql, values, commit, single):
-    'connection' = 'open_connection'
-    'values' = ()
-    'commit' = False
-    'single' = False
+    connection = open_connection()
+    values = ()
+    commit = False
+    single = False
 
 
 @app.route('/')
